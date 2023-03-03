@@ -1,0 +1,46 @@
+﻿@page "/"
+
+<PageTitle>@PageTitle</PageTitle>
+
+<h1>@PageTitle</h1>
+
+<div class="primary-container">
+    <div class="username-container">
+        <label for="userName">
+            Username:
+        </label>
+        <InputText id="userName" @bind-Value="@UserName" />
+    </div>
+
+    <div class="searchtype-container">
+        <label for="searchType">
+            Search Type:
+        </label>
+        <InputSelect id="searchType" @bind-Value="@SearchType">
+            @foreach (var searchType in Enum.GetValues(typeof(SearchTypes)))
+            {
+                <option value="@searchType">@searchType</option>
+            }
+        </InputSelect>
+    </div>
+
+    <div class="startdate-container">
+        <label for="startDate">
+            Start Date:
+        </label>
+        <InputDate id="startDate" @bind-Value="@StartDate" />
+    </div>
+
+    <div class="enddate-container">
+        <label for="endDate">
+            End Date:
+        </label>
+        <InputDate id="endDate" @bind-Value="@EndDate" />
+    </div>
+
+    <div class="button-container">
+        <button type="button" class="btn btn-primary" @onclick="DoSearchAsync">
+            Search
+        </button>
+    </div>
+</div>
